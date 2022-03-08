@@ -15,6 +15,10 @@ body {
   padding: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 nav {
   color: inherit;
   display: flex;
@@ -36,4 +40,72 @@ footer {
 
 footer h2 {
   font-weight: 400;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 20px;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  border: 3px solid black;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.popup-image {
+  max-width: 90%;
+}
+
+.close-button {
+  position: absolute;
+  cursor: pointer;
+}
+
+.popup-image img {
+  max-width: 100%;
+  max-height: 50vh;
+  align-self: center;
+}
+
+.popup-txt {
+  text-align: center;
+}
+
+.popup-txt h2 {
+  font-size: 6rem;
+  font-weight: normal;
+}
+
+.popup-txt h3 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.skill-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.skill-list > * {
+  font-size: 1.5rem;
+  padding: 5px;
+  margin: 0 20px;
+}
+
+.popup-txt p {
+  font-size: 2rem;
 }
