@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Meows';
-  src: url('assets/fonts/meows.ttf');
+  font-family: Meows;
+  src: url("./assets/fonts/meows.ttf");
 }
 
 body {
@@ -9,7 +9,7 @@ body {
 }
 
 * {
-  font-family: 'Meows', sans-serif;
+  font-family: Meows, sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -27,4 +27,13 @@ nav > a {
   text-decoration: none;
   font-size: 3rem;
   padding: 8px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+footer h2 {
+  font-weight: 400;
 }
