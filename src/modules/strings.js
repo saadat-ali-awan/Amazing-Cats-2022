@@ -1,4 +1,4 @@
-export const customBinId = '41ad3b18a3e4';
+export const customBinId = '935e9eb10381';
 export const customBinBaseURL = 'https://json.extendsclass.com/bin/';
 export const customBinRequestDataURL = `${customBinBaseURL}${customBinId}/`;
 
