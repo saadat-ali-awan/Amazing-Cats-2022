@@ -1,4 +1,5 @@
 export default function popupWindow(item) {
+  console.log(item.id);
   const popupContainer = document.createElement('div');
   popupContainer.classList.add('popup-container');
 

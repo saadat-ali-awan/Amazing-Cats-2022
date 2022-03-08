@@ -28,11 +28,22 @@ getItemsList(customBinRequestDataURL).then((list) => {
       <p class='description'>${listItem.description}</p>
       <ul>${listItem.skils.map((skill) => `<li>${skill}</li>`).join('')}</ul>
       <p class='cat-role'>${listItem.role}</p>
-      <div class='btns'><button>Like</button><button class='comment-btn'>Comment</button></div>
+      <div class='btns'><button>Like</button><a href='#comment-${listItem.id}' class='comment-btn'>Comment</a></div>
     </div>`;
 
-    document.querySelector(`#cat-${listItem.id} .comment-btn`).addEventListener('click', () => {
-      popup(listItem);
-    });
+    // document.querySelector(`#cat-${listItem.id} .comment-btn`).addEventListener('click', () => {
+    //   console.log('Clicked');
+    //   popup(listItem);
+    // });
   });
+});
+
+window.addEventListener('popstate', () => {
+  const hashValue = window.location.hash;
+  const index = parseInt(hashValue.substring(9), 10);
+
+  if (window.location.hash.match('#comment-')) {
+    console.log(index);
+    popup(catList[index - 1]);
+  }
 });
