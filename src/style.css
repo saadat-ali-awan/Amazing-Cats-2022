@@ -6,6 +6,9 @@
 body {
   color: black;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 * {
@@ -36,10 +39,97 @@ nav > a {
 footer {
   display: flex;
   justify-content: center;
+  padding: 8px;
+  box-shadow: 0 -2px #00000017;
 }
 
 footer h2 {
   font-weight: 400;
+  font-size: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  align-self: center;
+}
+
+main > div {
+  width: calc(33.33% - 2rem);
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+main > div:nth-child(1),
+main > div:nth-child(2),
+main > div:nth-child(3) {
+  margin-bottom: 0;
+}
+
+main h3 {
+  font-size: 1.5rem;
+}
+
+main img {
+  width: 100%;
+  height: 200px;
+  padding: 0 !important;
+  object-fit: cover;
+}
+
+main ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #000;
+  padding-bottom: 4px !important;
+  margin-top: 8px;
+  padding-top: 0;
+}
+
+main li {
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #fff;
+  margin: 0 2px;
+}
+
+main > div > * {
+  padding: 4px 8px 0 8px;
+  color: #000;
+  font-weight: bold;
+}
+
+main .description {
+  text-align: center;
+  font-size: 0.8rem;
+  padding-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px;     /* fallback */
+  max-height: 32px;      /* fallback */
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+main .cat-role {
+  font-size: 1.2rem;
+}
+
+.btns button {
+  padding: 2px;
+  margin: 2px;
 }
 
 .popup-container {
