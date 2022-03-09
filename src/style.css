@@ -50,7 +50,6 @@ footer h2 {
 
 main {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   width: 70%;
   justify-content: center;
@@ -65,7 +64,7 @@ main > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 main > div:nth-child(1),
@@ -105,7 +104,7 @@ main li {
 }
 
 main > div > * {
-  padding: 4px 8px 0 8px;
+  padding: 4px 8px 0;
   color: #000;
   font-weight: bold;
 }
@@ -116,7 +115,7 @@ main .description {
   padding-bottom: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: block;
   line-height: 16px;     /* fallback */
   max-height: 32px;      /* fallback */
   -webkit-line-clamp: 2; /* number of lines to show */
@@ -154,6 +153,22 @@ main .cat-role {
   max-height: 100%;
 }
 
+.popup-top-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.popup h2 {
+  font-size: 4rem;
+  font-weight: normal;
+  margin-left: calc(50% - 60px);
+}
+
+.close-button {
+  cursor: pointer;
+}
+
 .popup-content {
   max-height: 50vh;
   overflow: auto;
@@ -166,18 +181,12 @@ main .cat-role {
 .popup-image {
   max-width: 40%;
   min-width: 300px;
-  text-align: center;
   flex: 1;
-}
-
-.close-button {
-  position: absolute;
-  cursor: pointer;
 }
 
 .popup-image img {
   max-width: 100%;
-  max-height: 40vh;
+  max-height: 50vh;
   align-self: center;
 }
 
@@ -186,11 +195,6 @@ main .cat-role {
   flex: 1;
   width: 90%;
   max-height: 200px;
-}
-
-.popup h2 {
-  font-size: 4rem;
-  font-weight: normal;
 }
 
 .popup h3 {
@@ -221,4 +225,51 @@ main .cat-role {
 
 .display-comments {
   text-align: end;
+}
+
+.comments {
+  text-align: center;
+  overflow: auto;
+}
+
+.comment {
+  padding: 30px 60px;
+}
+
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  font-size: 1.5rem;
+}
+
+.time {
+  font-size: 0.8rem;
+}
+
+.comment-txt {
+  font-size: 1.3rem;
+}
+
+.add-comment {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.username-input {
+  padding: 5px;
+}
+
+.comment-input {
+  padding: 5px;
+  min-width: 50%;
+  margin: 0 10px;
+}
+
+.add-comment-btn {
+  min-width: 120px;
 }
