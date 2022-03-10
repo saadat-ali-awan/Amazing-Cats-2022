@@ -50,7 +50,6 @@ footer h2 {
 
 main {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   width: 70%;
   justify-content: center;
@@ -65,7 +64,7 @@ main > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 main > div:nth-child(1),
@@ -105,7 +104,7 @@ main li {
 }
 
 main > div > * {
-  padding: 4px 8px 0 8px;
+  padding: 4px 8px 0;
   color: #000;
   font-weight: bold;
 }
@@ -116,7 +115,7 @@ main .description {
   padding-bottom: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: block;
   line-height: 16px;     /* fallback */
   max-height: 32px;      /* fallback */
   -webkit-line-clamp: 2; /* number of lines to show */
@@ -143,7 +142,8 @@ main .cat-role {
 
 .popup {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
   padding: 15px;
   background-color: white;
@@ -151,16 +151,37 @@ main .cat-role {
   margin: auto;
   border: 3px solid black;
   max-height: 100%;
-  overflow: auto;
 }
 
-.popup-image {
-  max-width: 90%;
+.popup-top-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.popup h2 {
+  font-size: 4rem;
+  font-weight: normal;
+  margin-left: calc(50% - 60px);
 }
 
 .close-button {
-  position: absolute;
   cursor: pointer;
+}
+
+.popup-content {
+  max-height: 50vh;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-x: hidden;
+}
+
+.popup-image {
+  max-width: 40%;
+  min-width: 300px;
+  flex: 1;
 }
 
 .popup-image img {
@@ -171,15 +192,13 @@ main .cat-role {
 
 .popup-txt {
   text-align: center;
+  flex: 1;
+  width: 90%;
+  max-height: 200px;
 }
 
-.popup-txt h2 {
-  font-size: 6rem;
-  font-weight: normal;
-}
-
-.popup-txt h3 {
-  font-size: 2rem;
+.popup h3 {
+  font-size: 3rem;
   font-weight: normal;
 }
 
@@ -198,4 +217,59 @@ main .cat-role {
 
 .popup-txt p {
   font-size: 2rem;
+}
+
+.popup-comment-section {
+  width: 100%;
+}
+
+.display-comments {
+  text-align: end;
+}
+
+.comments {
+  text-align: center;
+  overflow: auto;
+}
+
+.comment {
+  padding: 30px 60px;
+}
+
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  font-size: 1.5rem;
+}
+
+.time {
+  font-size: 0.8rem;
+}
+
+.comment-txt {
+  font-size: 1.3rem;
+}
+
+.add-comment {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.username-input {
+  padding: 5px;
+}
+
+.comment-input {
+  padding: 5px;
+  min-width: 50%;
+  margin: 0 10px;
+}
+
+.add-comment-btn {
+  min-width: 120px;
 }

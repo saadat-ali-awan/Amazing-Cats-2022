@@ -43,7 +43,6 @@ window.addEventListener('popstate', () => {
   const index = parseInt(hashValue.substring(9), 10);
 
   if (window.location.hash.match('#comment-')) {
-    console.log(index);
     popup(catList[index - 1]);
   }
 });
