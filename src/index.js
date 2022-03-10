@@ -8,33 +8,35 @@ import getLikes from './modules/get_like';
 let catList = [];
 let likesList = [];
 
-getItemsList(customBinRequestDataURL).then((list) => {
-  catList = list;
+window.addEventListener('load', async () => {
+  await getItemsList(customBinRequestDataURL).then((list) => {
+    catList = list;
 
-  catList.forEach((listItem) => {
-    document.querySelector('main').innerHTML += `<div class="card" id="cat-${listItem.id}">
-    <img src="${listItem.image}" alt="">
-    <div class='card-back-drop'>
-      <div class="details">
-        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path fill= "#fff"; d="M 40 80 c 22 0 40 -22 40 -40 v 40 Z"/></svg>    
-        <h3>${listItem.name} (${listItem.role})</h3>
-        <div class="more">
-          <div class="description">${listItem.description}</div>
-          <div class="btns">
-            <a href='#cat-${listItem.id}'>Like <sup class='likes'>0</sup></a>
-            <a href='#comment-${listItem.id}'>Comment</a>
+    catList.forEach((listItem) => {
+      document.querySelector('main').innerHTML += `<div class="card" id="cat-${listItem.id}">
+      <img src="${listItem.image}" alt="">
+      <div class='card-back-drop'>
+        <div class="details">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path fill= "#fff"; d="M 40 80 c 22 0 40 -22 40 -40 v 40 Z"/></svg>    
+          <h3>${listItem.name} (${listItem.role})</h3>
+          <div class="more">
+            <div class="description">${listItem.description}</div>
+            <div class="btns">
+              <a href='#cat-${listItem.id}'>Like <sup class='likes'>0</sup></a>
+              <a href='#comment-${listItem.id}'>Comment</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
+    });
   });
-});
 
-getLikes(likesApiURL).then((list) => {
-  likesList = list;
-  likesList.forEach((cat) => {
-    document.querySelector(`#${cat.item_id} .likes`).innerHTML = `${cat.likes}`;
+  await getLikes(likesApiURL).then((list) => {
+    likesList = list;
+    likesList.forEach((cat) => {
+      document.querySelector(`#${cat.item_id} .likes`).innerHTML = `${cat.likes}`;
+    });
   });
 });
 
