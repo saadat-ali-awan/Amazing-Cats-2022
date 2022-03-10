@@ -1,48 +1,60 @@
 import './style.css';
-import { customBinRequestDataURL } from './modules/strings.js';
+import { customBinRequestDataURL, likesApiURL } from './modules/strings.js';
 import getItemsList from './modules/get_items_list.js';
 import popup from './modules/Comment_popup.js';
+import addLike from './modules/add_like.js';
+import getLikes from './modules/get_like';
 
 let catList = [];
-
-// catList.forEach((element) => {
-//   document.querySelector('main').innerHTML += `
-//   <div id="${element.id}">
-//     <img src="${element.image}" class='cat-image'>
-//     <h3>${element.name}</h3>
-//     <p class='description'>${element.description}</p>
-//     <ul>${element.skils.map((skill) => `<li>${skill}</li>`).join('')}</ul>
-//     <p class='cat-role'>${element.role}</p>
-//     <div class='btns'><button>Like</button><button>Comment</button></div>
-//   </div>`;
-// });
+let likesList = [];
 
 getItemsList(customBinRequestDataURL).then((list) => {
   catList = list;
 
   catList.forEach((listItem) => {
-    document.querySelector('main').innerHTML += `
-    <div id="cat-${listItem.id}">
-      <img src="${listItem.image}" class='cat-image'>
-      <h3>${listItem.name}</h3>
-      <p class='description'>${listItem.description}</p>
-      <ul>${listItem.skils.map((skill) => `<li>${skill}</li>`).join('')}</ul>
-      <p class='cat-role'>${listItem.role}</p>
-      <div class='btns'><button>Like</button><a href='#comment-${listItem.id}' class='comment-btn'>Comment</a></div>
-    </div>`;
-
-    // document.querySelector(`#cat-${listItem.id} .comment-btn`).addEventListener('click', () => {
-    //   console.log('Clicked');
-    //   popup(listItem);
-    // });
+    document.querySelector('main').innerHTML += `<div class="card" id="cat-${listItem.id}">
+    <img src="${listItem.image}" alt="">
+    <div class='card-back-drop'>
+      <div class="details">
+        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path fill= "#fff"; d="M 40 80 c 22 0 40 -22 40 -40 v 40 Z"/></svg>    
+        <h3>${listItem.name} (${listItem.role})</h3>
+        <div class="more">
+          <div class="description">${listItem.description}</div>
+          <div class="btns">
+            <a href='#cat-${listItem.id}'>Like <sup class='likes'>0</sup></a>
+            <a href='#comment-${listItem.id}'>Comment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
   });
 });
 
-window.addEventListener('popstate', () => {
+getLikes(likesApiURL).then((list) => {
+  likesList = list;
+  likesList.forEach((cat) => {
+    document.querySelector(`#${cat.item_id} .likes`).innerHTML = `${cat.likes}`;
+  });
+});
+
+window.addEventListener('popstate', async () => {
   const hashValue = window.location.hash;
-  const index = parseInt(hashValue.substring(9), 10);
 
   if (window.location.hash.match('#comment-')) {
+    const index = parseInt(hashValue.substring(9), 10);
     popup(catList[index - 1]);
+  } else if (window.location.hash.match('#cat-')) {
+    const index = parseInt(hashValue.substring(5), 10);
+    if (likesList[index - 1]) {
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.add('loader');
+      if (await addLike(likesApiURL, hashValue.substring(1))) {
+        likesList[index - 1].likes += 1;
+      }
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.remove('loader');
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).innerHTML = likesList[index - 1].likes;
+    } else {
+      console.log(await addLike(likesApiURL, hashValue.substring(1)));
+    }
   }
 });

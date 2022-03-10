@@ -4,8 +4,8 @@
 }
 
 body {
-  color: black;
-  background-color: #fff;
+  color: #6a515e;
+  background-color: #fef8f8;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -56,6 +56,7 @@ main {
   align-items: center;
   flex: 1;
   align-self: center;
+  color: inherit;
 }
 
 main > div {
@@ -64,7 +65,14 @@ main > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  position: relative;
+  border-radius: 40px;
+  height: 300px;
+  min-width: 260px;
+  max-width: 300px;
+  color: inherit;
+  border: 1px solid #6a515e;
+  overflow: hidden;
 }
 
 main > div:nth-child(1),
@@ -73,62 +81,80 @@ main > div:nth-child(3) {
   margin-bottom: 0;
 }
 
-main h3 {
-  font-size: 1.5rem;
-}
-
-main img {
+.card > img {
+  border-radius: 40px;
   width: 100%;
-  height: 200px;
-  padding: 0 !important;
+  height: 100%;
   object-fit: cover;
 }
 
-main ul {
-  list-style: none;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  background-color: #000;
-  padding-bottom: 4px !important;
-  margin-top: 8px;
-  padding-top: 0;
-}
-
-main li {
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 12px;
-  background-color: #fff;
-  margin: 0 2px;
-}
-
-main > div > * {
-  padding: 4px 8px 0;
-  color: #000;
+.card * {
+  color: inherit;
   font-weight: bold;
+  text-align: center;
 }
 
-main .description {
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+}
+
+.more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.details:hover .more {
+  max-height: 500px;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.card-back-drop {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  background-color: #6a515e00;
+  pointer-events: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.card-back-drop:hover {
+  background-color: #6a515e6b;
+}
+
+.details {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 40px 0 38px 38px;
+  padding: 1rem;
+  pointer-events: auto;
+}
+
+.description {
   text-align: center;
   font-size: 0.8rem;
   padding-bottom: 4px;
-  overflow: hidden;
   text-overflow: ellipsis;
-  display: block;
-  line-height: 16px;     /* fallback */
-  max-height: 32px;      /* fallback */
-  -webkit-line-clamp: 2; /* number of lines to show */
+  display: -webkit-box;
+  line-height: 16px;
+  max-height: 32px;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 8px;
 }
 
-main .cat-role {
-  font-size: 1.2rem;
-}
-
-.btns button {
-  padding: 2px;
-  margin: 2px;
+.more > .btns > a {
+  color: #6a515e;
+  text-decoration: none;
 }
 
 .popup-container {
@@ -202,21 +228,23 @@ main .cat-role {
   font-weight: normal;
 }
 
-.skill-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.skill-list > * {
-  font-size: 1.5rem;
-  padding: 5px;
-  margin: 0 20px;
-}
-
 .popup-txt p {
   font-size: 2rem;
+}
+
+.loader {
+  font-weight: bold;
+  animation: opacity-change 1s infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes opacity-change {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .popup-comment-section {
