@@ -4,7 +4,7 @@
 }
 
 body {
-  color: #6A515E;
+  color: #6a515e;
   background-color: #fef8f8;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ main > div {
   min-width: 260px;
   max-width: 300px;
   color: inherit;
-  border: 1px solid #6A515E;
+  border: 1px solid #6a515e;
   overflow: hidden;
 }
 
@@ -103,20 +103,15 @@ main > div:nth-child(3) {
   right: 0;
 }
 
-.card__arc path {
-  fill: #fff;
-  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
-}  
-
 .more {
   max-height: 0;
   overflow: hidden;
-  transition: max-height .2s ease-in-out;
+  transition: max-height 0.2s ease-in-out;
 }
 
 .details:hover .more {
   max-height: 500px;
-  transition: max-height .2s ease-in-out;
+  transition: max-height 0.2s ease-in-out;
 }
 
 .card-back-drop {
@@ -159,7 +154,7 @@ main > div:nth-child(3) {
 }
 
 .more > .btns > a {
-  color: #6A515E;
+  color: #6a515e;
   text-decoration: none;
 }
 
