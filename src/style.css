@@ -221,6 +221,7 @@ main .cat-role {
 
 .popup-comment-section {
   width: 100%;
+  max-height: calc(100vh - 50vh - 110px);
 }
 
 .display-comments {
@@ -229,6 +230,7 @@ main .cat-role {
 
 .comments {
   text-align: center;
+  max-height: 20vh;
   overflow: auto;
 }
 

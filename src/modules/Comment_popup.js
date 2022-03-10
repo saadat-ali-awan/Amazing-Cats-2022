@@ -1,4 +1,4 @@
-import getComments from './get_comments.js';
+import { getComments, addComments } from './fetch_comments.js';
 
 export default async function popupWindow(item) {
   const popupContainer = document.createElement('div');
@@ -40,12 +40,29 @@ export default async function popupWindow(item) {
   const comments = await getComments(item.id);
   document.querySelector('.comments').innerHTML = `${
     comments.map((comment) => `<div class="comment">
-      <div class="comment-info">
-        <a class="username">${comment.username}:</a>
-        <p class="time">Created on: ${comment.creation_date}</p>
-      </div>
-      <p class="comment-txt">${comment.comment}</p>
-    </div>`).join('')}`;
+    <div class="comment-info">
+      <a class="username">${comment.username}:</a>
+      <p class="time">Created on: ${comment.creation_date}</p>
+    </div>
+    <p class="comment-txt">${comment.comment}</p>
+  </div>`).join('')}`;
+
+  document.querySelector('.add-comment-btn').addEventListener('click', () => {
+    const commentUser = document.querySelector('.username-input');
+    const commentText = document.querySelector('.comment-input');
+
+    addComments(`cat-${item.id}`, commentUser.value, commentText.value);
+    document.querySelector('.comments').innerHTML += `<div class="comment">
+    <div class="comment-info">
+      <a class="username">${commentUser.value}:</a>
+      <p class="time">Created on: ${new Date().getFullYear()}-0${new Date().getMonth() + 1}-0${new Date().getDate()}</p>
+    </div>
+    <p class="comment-txt">${commentText.value}</p>
+  </div>`;
+
+    commentUser.value = '';
+    commentText.value = '';
+  });
 
   popupContainer.addEventListener('click', (e) => {
     if (e.target === popupContainer || e.target === popupContainer.querySelector('.close-button')) {
