@@ -21,7 +21,7 @@ getItemsList(customBinRequestDataURL).then((list) => {
         <div class="more">
           <div class="description">${listItem.description}</div>
           <div class="btns">
-            <a href='#cat-${listItem.id}'>Like <sup class='likes'>1</sup></a>
+            <a href='#cat-${listItem.id}'>Like <sup class='likes'>0</sup></a>
             <a href='#comment-${listItem.id}'>Comment</a>
           </div>
         </div>
