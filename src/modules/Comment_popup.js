@@ -1,4 +1,5 @@
 import { getComments, addComments } from './fetch_comments.js';
+import CCounter from './comments_counter.js';
 
 export default async function popupWindow(item) {
   const popupContainer = document.createElement('div');
@@ -22,7 +23,7 @@ export default async function popupWindow(item) {
     </div>
     <div class="popup-comment-section">
       <div class="display-comments">
-        <a class="comment-counter">4 Comments</a>
+        <a class="comment-counter">0 Comments</a>
         <div class="comments">
           
         </div>
@@ -38,6 +39,8 @@ export default async function popupWindow(item) {
   document.querySelector('body').appendChild(popupContainer);
 
   const comments = await getComments(item.id);
+  let numComments = CCounter(comments);
+  document.querySelector('.comment-counter').innerHTML = `${numComments} Comments`;
   document.querySelector('.comments').innerHTML = `${
     comments.slice().reverse().map((comment) => `<div class="comment">
     <div class="comment-info">
@@ -78,6 +81,9 @@ export default async function popupWindow(item) {
     <p class="comment-txt">${commentText.value}</p>`;
 
     commentsDiv.prepend(newElem);
+
+    numComments += 1;
+    document.querySelector('.comment-counter').innerHTML = `${numComments} Comments`;
 
     commentUser.value = '';
     commentText.value = '';
