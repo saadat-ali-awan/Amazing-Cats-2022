@@ -9,5 +9,5 @@ it('returns three', () => {
 });
 
 it('throws an error', () => {
-  expect(CCounter()).toThrowError('Undefined Number of comments');
+  expect(() => { CCounter(); }).toThrowError('Undefined Number of comments');
 });
