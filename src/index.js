@@ -46,11 +46,15 @@ window.addEventListener('popstate', async () => {
     popup(catList[index - 1]);
   } else if (window.location.hash.match('#cat-')) {
     const index = parseInt(hashValue.substring(5), 10);
-    document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.add('loader');
-    if (await addLike(likesApiURL, hashValue.substring(1))) {
-      likesList[index - 1].likes += 1;
+    if (likesList[index - 1]) {
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.add('loader');
+      if (await addLike(likesApiURL, hashValue.substring(1))) {
+        likesList[index - 1].likes += 1;
+      }
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.remove('loader');
+      document.querySelector(`#${likesList[index - 1].item_id} .likes`).innerHTML = likesList[index - 1].likes;
+    } else {
+      console.log(await addLike(likesApiURL, hashValue.substring(1)));
     }
-    document.querySelector(`#${likesList[index - 1].item_id} .likes`).classList.remove('loader');
-    document.querySelector(`#${likesList[index - 1].item_id} .likes`).innerHTML = likesList[index - 1].likes;
   }
 });
