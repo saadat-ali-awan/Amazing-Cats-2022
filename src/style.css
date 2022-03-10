@@ -232,6 +232,8 @@ main .cat-role {
   text-align: center;
   max-height: 20vh;
   overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .comment {

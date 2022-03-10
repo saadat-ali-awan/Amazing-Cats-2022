@@ -39,7 +39,7 @@ export default async function popupWindow(item) {
 
   const comments = await getComments(item.id);
   document.querySelector('.comments').innerHTML = `${
-    comments.map((comment) => `<div class="comment">
+    comments.slice().reverse().map((comment) => `<div class="comment">
     <div class="comment-info">
       <a class="username">${comment.username}:</a>
       <p class="time">Created on: ${comment.creation_date}</p>
@@ -52,16 +52,36 @@ export default async function popupWindow(item) {
     const commentText = document.querySelector('.comment-input');
 
     addComments(`cat-${item.id}`, commentUser.value, commentText.value);
-    document.querySelector('.comments').innerHTML += `<div class="comment">
+    const commentsDiv = document.querySelector('.comments');
+    const newElem = document.createElement('div');
+    newElem.classList.add('comment');
+
+    let month = 0;
+    if (new Date().getMonth() + 1 < 10) {
+      month = `0${new Date().getMonth() + 1}`;
+    } else {
+      month = new Date().getMonth() + 1;
+    }
+
+    let day = 0;
+    if (new Date().getDate() < 10) {
+      day = `0${new Date().getDate()}`;
+    } else {
+      day = new Date().getDate();
+    }
+
+    newElem.innerHTML += `
     <div class="comment-info">
       <a class="username">${commentUser.value}:</a>
-      <p class="time">Created on: ${new Date().getFullYear()}-0${new Date().getMonth() + 1}-0${new Date().getDate()}</p>
+      <p class="time">Created on: ${new Date().getFullYear()}-${month}-${day}</p>
     </div>
-    <p class="comment-txt">${commentText.value}</p>
-  </div>`;
+    <p class="comment-txt">${commentText.value}</p>`;
+
+    commentsDiv.prepend(newElem);
 
     commentUser.value = '';
     commentText.value = '';
+    commentsDiv.scrollTop = 0;
   });
 
   popupContainer.addEventListener('click', (e) => {
