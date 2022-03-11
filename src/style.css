@@ -269,6 +269,7 @@ main > div:nth-child(3) {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 55vh;
 }
 
 .popup-image > img {
