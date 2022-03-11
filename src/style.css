@@ -43,7 +43,6 @@ ul {
 }
 
 nav {
-  color: inherit;
   display: flex;
   justify-content: center;
   box-shadow: 0 2px #00000017;
@@ -250,6 +249,7 @@ main > div:nth-child(3) {
 
 .popup-content {
   flex: 1;
+  display: flex;
 }
 
 .popup-top-bar {
@@ -262,10 +262,6 @@ main > div:nth-child(3) {
   flex: 1;
   text-align: center;
   font-size: 4rem;
-}
-
-.popup-content {
-  display: flex;
 }
 
 .popup-image {
@@ -301,7 +297,7 @@ main > div:nth-child(3) {
 
 .comments {
   flex: 1;
-  max-height:  50vh;
+  max-height: 50vh;
   overflow: auto;
 }
 
