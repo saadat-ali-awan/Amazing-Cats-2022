@@ -1,0 +1,48 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saadat123456/webpack-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saadat123456/webpack-demo/issues"
+  },
+  "homepage": "https://github.com/Saadat123456/webpack-demo#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.5.1",
+    "css-loader": "^6.6.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.4",
+    "gh-pages": "^3.2.3",
+    "hint": "^6.1.9",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {}
+}
